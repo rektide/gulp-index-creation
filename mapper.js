@@ -7,6 +7,11 @@ function _len(path){
 	return segments && segments.length || 0
 }
 
+/**
+  Mapper is a reader which creates two data-structures-
+  dirMap looks up a directory path and returns all contents of that directory
+  depths records all known directories, indexed by the depth of that directory
+*/
 function mapper(){
 	var dirMap= {},
 	  depths= []

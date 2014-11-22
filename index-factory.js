@@ -3,6 +3,9 @@ var Buffer= require("buffer").Buffer,
   File= require("vinyl"),
   path= require("path")
 
+/**
+  IndexFactory creates an `index.js` file for a directory and adds the index.js file to the parent
+*/
 function IndexFactory(ctx, mapper){
 	return function(dir){
 		var files= mapper.dirMap[dir],
@@ -10,10 +13,8 @@ function IndexFactory(ctx, mapper){
 		  first= true
 
 		for(var i= 0; i< files.length; ++i){
-			var file= files[i]
-			if(file.endsWith(".js"))
-				file= file.substring(0, file.length-3)
-			var named = path.dirname(file)
+			var file= files[i],
+			  named = path.dirname(file)
 			if(named == ".")
 				named= file
 			index.push(
