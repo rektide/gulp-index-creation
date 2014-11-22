@@ -1,16 +1,18 @@
-var path= require('path'),
-  through2= require('through2')
+var through2= require("through2")
+var mapper= require("./mapper")
 
-module.exports = (function GulpIndexCreation(options){
-	var seen= {}
+function DirMapTask(){
+	var mapper= mapper()
 	var stream= through2.obj(function(file, enc, cb){
-		var basename= path.basename(file.path),
-		  basename= path.basename(file.path),
-		  dir= seen[basename]|| (seen[basename]= [])
+		mapper(file.path)
 		this.push(file)
 		cb()
 	}, function(){
-		this.emit('end')
+		this.emit("end")
 	})
+	stream.dirMap= mapper.dirMap
+	stream.depths= mapper.depths
 	return stream
-})
+}
+
+module.exports= DirMapTask
