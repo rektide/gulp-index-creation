@@ -1,0 +1,19 @@
+{
+	"name": "gulp-index-creation",
+	"version": "1.0.0",
+	"description": "Gulp plugin which creates index.js files",
+	"main": "gulp-index-creation.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://archive.eldergods.com/gulp-index-creation"
+	},
+	"author": "rektide de la faye",
+	"license": "X",
+	"dependencies": {
+		"gulp": "^3.8.10",
+		"through2": "^0.6.3"
+	}
+}
