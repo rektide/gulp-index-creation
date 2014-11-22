@@ -11,12 +11,22 @@ function mapper(){
 	var dirMap= {},
 	  depths= []
 	function acceptFile(file){
-	
 		var rel= path.relative(file.base, file.path),
 		  dir= path.dirname(rel),
 		  named= file.named|| path.basename(file.path),
 		  len= _len(dir)
-		console.log('entry', dir, named, len)
+
+		if(named == "index.js"){
+			if(len == 0){
+				console.log("top level index")
+				return
+			}
+
+			// add into parent's depth
+			named= path.basename(dir)+path.sep+"index.js"
+			dir= path.dirname(dir)
+		}
+		console.log("~~entry~~", dir, named, len)
 
 		// add into dir
 		var files= dirMap[dir]|| (dirMap[dir]= [])
