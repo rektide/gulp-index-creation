@@ -17,16 +17,10 @@ function mapper(){
 		  len= _len(dir)
 
 		if(named == "index.js"){
-			if(len == 0){
-				console.log("top level index")
-				return
-			}
-
 			// add into parent's depth
 			named= path.basename(dir)+path.sep+"index.js"
 			dir= path.dirname(dir)
 		}
-		console.log("~~entry~~", dir, named, len)
 
 		// add into dir
 		var files= dirMap[dir]|| (dirMap[dir]= [])
@@ -39,9 +33,6 @@ function mapper(){
 		if(depth.indexOf(dir) == -1){
 			depth.push(dir)
 		}
-		console.log(dirMap)
-		console.log(depths)
-		console.log()
 	}
 	acceptFile.dirMap= dirMap
 	acceptFile.depths= depths

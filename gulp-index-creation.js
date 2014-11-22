@@ -15,7 +15,6 @@ function DirMapTask(){
 	}, function(){
 		var indexer= IndexFactory(this, mapper)
 		for(var i= mapper.depths.length- 1; i>= 0; --i){
-			console.log("at", i, mapper.depths[i])
 			var depth= mapper.depths[i]
 			for(var j= 0; j< depth.length; ++j){
 				indexer(depth[j])

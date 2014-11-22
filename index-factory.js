@@ -24,19 +24,17 @@ function IndexFactory(ctx, mapper){
 				file,
 				"\")")
 		}
-		if(index){
-			index.push("}")
-			index= index.join("")
-			index= new Buffer(index)
+		index.push("}")
+		index= index.join("")
+		index= new Buffer(index)
 
-			index= new File({
-				path: dir+"/index.js",
-				size: index.length,
-				contents: index
-			})
-			mapper(index)
-			ctx.push(index)
-		}
+		index= new File({
+			path: dir+"/index.js",
+			size: index.length,
+			contents: index
+		})
+		mapper(index)
+		ctx.push(index)
 	}	
 	
 }
